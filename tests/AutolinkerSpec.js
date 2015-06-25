@@ -1251,6 +1251,30 @@ describe( "Autolinker", function() {
 
 		} );
 
+		describe( "`keepOriginalText` option", function() {
+
+			it( "should not remove the prefix for non-http protocols", function() {
+				var result = Autolinker.link( "Test file://execute-virus.com", { keepOriginalText: true, newWindow: false } );
+				expect( result ).toBe( 'Test <a href="file://execute-virus.com">file://execute-virus.com</a>' );
+			} );
+
+
+			it( "should not remove 'http://www.' when the 'keepOriginalText' option is set to `true`", function() {
+				var result = Autolinker.link( "Test http://www.url.com", { keepOriginalText: true, newWindow: false } );
+				expect( result ).toBe( 'Test <a href="http://www.url.com">http://www.url.com</a>' );
+			} );
+
+			it( "should not add 'http://' when the 'keepOriginalText' option is set to `true`", function() {
+				var result = Autolinker.link( "Test url.com", { keepOriginalText: true, newWindow: false } );
+				expect( result ).toBe( 'Test <a href="http://url.com">url.com</a>' );
+			} );
+
+			it( "should not remove 'http://www.' when the 'keepOriginalText' option is set to `true` and 'stripPrefix' is set to `true`", function() {
+				var result = Autolinker.link( "Test http://www.url.com", { keepOriginalText: true, stripPrefix: true, newWindow: false } );
+				expect( result ).toBe( 'Test <a href="http://www.url.com">http://www.url.com</a>' );
+			} );
+
+		} );
 
 		describe( "`truncate` option", function() {
 

@@ -199,6 +199,16 @@ Autolinker.prototype = {
 	stripPrefix : true,
 
 	/**
+	 * @cfg {Boolean} keepOriginalText
+	 *
+	 * `true` if the original text should not be modified.
+	 * No 'www.' or 'http://' added or stripped. Overwrites `stripPrefix` behaviour.
+	 * `false` that not original text should be kept.
+	 */
+	 keepOriginalText: false,
+
+
+	/**
 	 * @cfg {Number} truncate
 	 *
 	 * A number for how many characters long matched text should be truncated to inside the text of
