@@ -49,6 +49,11 @@ Autolinker.matchParser.MatchParser = Autolinker.Util.extend( Object, {
 	 */
 	stripPrefix : true,
 
+	/**
+	 * @cfg {Boolean} keepOriginalText
+	 * @inheritdoc Autolinker#keepOriginalText
+	 */
+	keepOriginalText: false,
 
 	/**
 	 * @private
@@ -387,7 +392,8 @@ Autolinker.matchParser.MatchParser = Autolinker.Util.extend( Object, {
 				url : matchStr,
 				protocolUrlMatch : !!protocolUrlMatch,
 				protocolRelativeMatch : !!protocolRelativeMatch,
-				stripPrefix : this.stripPrefix
+				stripPrefix : this.stripPrefix,
+				keepOriginalText : this.keepOriginalText
 			} );
 		}
 

@@ -424,12 +424,13 @@ Autolinker.prototype = {
 
 		if( !matchParser ) {
 			matchParser = this.matchParser = new Autolinker.matchParser.MatchParser( {
-				urls        : this.urls,
-				email       : this.email,
-				twitter     : this.twitter,
-				phone       : this.phone,
-				hashtag     : this.hashtag,
-				stripPrefix : this.stripPrefix
+				urls             : this.urls,
+				email            : this.email,
+				twitter          : this.twitter,
+				phone            : this.phone,
+				hashtag          : this.hashtag,
+				stripPrefix      : this.stripPrefix,
+				keepOriginalText : this.keepOriginalText
 			} );
 		}
 
@@ -1684,6 +1685,11 @@ Autolinker.matchParser.MatchParser = Autolinker.Util.extend( Object, {
 	 */
 	stripPrefix : true,
 
+	/**
+	 * @cfg {Boolean} keepOriginalText
+	 * @inheritdoc Autolinker#keepOriginalText
+	 */
+	keepOriginalText: false,
 
 	/**
 	 * @private
@@ -2022,7 +2028,8 @@ Autolinker.matchParser.MatchParser = Autolinker.Util.extend( Object, {
 				url : matchStr,
 				protocolUrlMatch : !!protocolUrlMatch,
 				protocolRelativeMatch : !!protocolRelativeMatch,
-				stripPrefix : this.stripPrefix
+				stripPrefix : this.stripPrefix,
+				keepOriginalText : this.keepOriginalText
 			} );
 		}
 
@@ -2641,7 +2648,12 @@ Autolinker.match.Url = Autolinker.Util.extend( Autolinker.match.Match, {
 	 * @cfg {Boolean} stripPrefix (required)
 	 * @inheritdoc Autolinker#stripPrefix
 	 */
-	
+
+	/**
+	 * @cfg {Boolean} keepOriginalText (required)
+	 * @inheritdoc Autolinker#keepOriginalText
+	 */
+
 
 	/**
 	 * @private

@@ -33,7 +33,12 @@ Autolinker.match.Url = Autolinker.Util.extend( Autolinker.match.Match, {
 	 * @cfg {Boolean} stripPrefix (required)
 	 * @inheritdoc Autolinker#stripPrefix
 	 */
-	
+
+	/**
+	 * @cfg {Boolean} keepOriginalText (required)
+	 * @inheritdoc Autolinker#keepOriginalText
+	 */
+
 
 	/**
 	 * @private
